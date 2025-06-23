@@ -1,21 +1,26 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Enable standalone output for Docker
+  output: "standalone",
+
   images: {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "th.bing.com",
+        hostname: "**",
       },
       {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-      },
-      {
-        protocol: "https",
-        hostname: "via.placeholder.com",
+        protocol: "http",
+        hostname: "**",
       },
     ],
+  },
+
+  // Environment variables that should be available at build time
+  env: {
+    NEXT_PUBLIC_API_URL:
+      process.env.NEXT_PUBLIC_API_URL || "http://localhost:3100",
   },
 };
 
