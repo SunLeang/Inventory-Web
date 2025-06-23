@@ -90,7 +90,7 @@ export default async function HomePage() {
             Failed to load inventory
           </h1>
           <p className="text-purple-200">
-            Make sure the backend server is running on port 3100
+            Make sure the backend server is running
           </p>
         </div>
       </div>
