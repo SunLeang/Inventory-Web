@@ -34,11 +34,11 @@ COPY --from=builder /app/public ./public
 
 # Only copy if standalone exists, otherwise copy regular build
 RUN mkdir -p .next
-COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/.next/static ./.next/static
 
 USER nextjs
 
 EXPOSE 3000
 
-CMD ["node", "server.js"]
+CMD ["npm", "start"]
