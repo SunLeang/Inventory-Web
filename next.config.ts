@@ -4,11 +4,6 @@ const nextConfig: NextConfig = {
   // Enable standalone output for Docker
   output: "standalone",
 
-  // Add experimental allowedDevOrigins for development
-  experimental: {
-    allowedDevOrigins: ["103.253.145.247:9004"],
-  },
-
   images: {
     remotePatterns: [
       {
@@ -25,7 +20,7 @@ const nextConfig: NextConfig = {
   // Environment variables that should be available at build time
   env: {
     NEXT_PUBLIC_API_URL:
-      process.env.NEXT_PUBLIC_API_URL || "http://localhost:3100", // Fixed: Changed from 3000 to 3100
+      process.env.NEXT_PUBLIC_API_URL || "http://localhost:3100",
   },
 
   async headers() {
