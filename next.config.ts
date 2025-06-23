@@ -1,26 +1,29 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Keep standalone output for Docker
-  output: "standalone",
+  // Remove standalone for now
+  // output: "standalone",
 
   images: {
+    // Allow all external domains
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "*",
+        hostname: "**",
       },
       {
         protocol: "http",
-        hostname: "*",
+        hostname: "**",
       },
     ],
+    // Disable image optimization for external images
+    unoptimized: true,
   },
 
   // Environment variables that should be available at build time
   env: {
     NEXT_PUBLIC_API_URL:
-      process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000", // Keep port 3000
+      process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000",
   },
 
   async headers() {
@@ -50,3 +53,5 @@ const nextConfig: NextConfig = {
     ];
   },
 };
+
+export default nextConfig;
