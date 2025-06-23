@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Enable standalone output for Docker
+  // Keep standalone output for Docker
   output: "standalone",
 
   images: {
@@ -20,18 +20,17 @@ const nextConfig: NextConfig = {
   // Environment variables that should be available at build time
   env: {
     NEXT_PUBLIC_API_URL:
-      process.env.NEXT_PUBLIC_API_URL || "http://localhost:3100",
+      process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000", // Keep port 3000
   },
 
   async headers() {
     return [
       {
-        // Apply these headers to all routes
         source: "/(.*)",
         headers: [
           {
             key: "Access-Control-Allow-Origin",
-            value: "*", // Allow all origins
+            value: "*",
           },
           {
             key: "Access-Control-Allow-Credentials",
@@ -51,5 +50,3 @@ const nextConfig: NextConfig = {
     ];
   },
 };
-
-export default nextConfig;
